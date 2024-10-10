@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vega-Lite Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>All About CO2 Emission</h1>
+    <div id="chart1"></div>
+    <div id="chart2"></div>
+
+    <div class="chart-container">
+        <div class="chart">
+            <div id="chart3"></div>
+        </div>
+        <div class="description">
+            <h2>Understanding CO2 Emissions</h2>
+            <p>
+                Carbon dioxide (CO2) emissions are one of the primary drivers of climate change. They mainly originate from the combustion of fossil fuels, including coal, oil, and natural gas, which are used for energy production, industry, and transportation. CO2 emissions significantly contribute to the greenhouse effect, leading to global warming. This visualization allows you to explore and compare the CO2 emissions of various countries, highlighting the disparities in emission levels between nations and the factors that influence these differences, such as population size, economic activity, and industrial development. By understanding these emissions, we can better assess the global effort required to reduce CO2 and mitigate climate impacts.
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var vg_1 = "js/co2_map.vg.json";
+        var vg_2 = "js/bubble_chart.vg.json";
+        var vg_3 = "js/bar_chart.vg.json";
+
+        vegaEmbed('#chart1', vg_1).then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#chart2', vg_2).then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#chart3', vg_3).then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+    </script>
+
+</body>
+</html>

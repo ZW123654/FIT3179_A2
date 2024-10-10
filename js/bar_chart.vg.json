@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "2022 CO2 Emissions: Comparison",
+    "width": 700,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ZW123654/FIT3179_A2/ca7e1d8707338ecad3493d896fca047dae9c0e17/data/simplified-co2-data.csv",
+      "format": {"type": "csv"}
+    },
+    "params": [
+      {
+        "name": "countrySelection1",
+        "value": "Australia",
+        "bind": {
+          "input": "select",
+          "options": [
+            "China",
+            "United States",
+            "India",
+            "Russia",
+            "Brazil",
+            "United Kingdom",
+            "Germany",
+            "Australia",
+            "Japan"
+          ],
+          "name": "Select Country 1: "
+        }
+      },
+      {
+        "name": "countrySelection2",
+        "value": "United States",
+        "bind": {
+          "input": "select",
+          "options": [
+            "China",
+            "United States",
+            "India",
+            "Russia",
+            "Brazil",
+            "United Kingdom",
+            "Germany",
+            "Australia",
+            "Japan"
+          ],
+          "name": "Select Country 2: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.year == 2022"},
+      {
+        "filter": "datum.country == countrySelection1 || datum.country == countrySelection2"
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "country",
+        "type": "nominal",
+        "title": "Country",
+        "sort": "-y"
+      },
+      "y": {
+        "field": "co2",
+        "type": "quantitative",
+        "title": "CO2 Emissions (million metric tons)"
+      },
+      "color": {
+        "field": "country",
+        "type": "nominal",
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "country", "type": "nominal", "title": "Country"},
+        {"field": "co2", "type": "quantitative", "title": "CO2 Emissions"}
+      ]
+    },
+    "mark": {
+      "type": "bar",
+      "size": 100
+    }
+  }

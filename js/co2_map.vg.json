@@ -36,16 +36,62 @@
         }
       }
     ],
-    "mark": {"type": "geoshape"},
-    "encoding": {
-      "color": {
-        "field": "co2",
-        "type": "quantitative",
-        "scale": {"scheme": "reds"}
+    "layer": [
+      {
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color": {
+            "field": "co2",
+            "type": "quantitative",
+            "scale": {"scheme": "reds"}
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "co2", "type": "quantitative", "title": "CO2 Emissions"}
+          ]
+        }
       },
-      "tooltip": [
-        {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-        {"field": "co2", "type": "quantitative", "title": "CO2 Emissions"}
-      ]
-    }
+      {
+        "data": {
+          "values": [
+            {"country": "Australia", "longitude": 133.7751, "latitude": -25.2744},
+            {"country": "China", "longitude": 104.1954, "latitude": 35.8617},
+            {"country": "Russia", "longitude": 105.3188, "latitude": 61.5240},
+            {"country": "Brazil", "longitude": -51.9253, "latitude": -14.2350},
+            {"country": "Canada", "longitude": -106.3468, "latitude": 56.1304},
+            {"country": "Indonesia", "longitude": 113.9213, "latitude": -0.7893},
+            {"country": "New Zealand", "longitude": 174.8850, "latitude": -40.9006}
+          ]
+        },
+        "transform": [
+          {
+            "lookup": "country",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/ZW123654/FIT3179_A2/ca7e1d8707338ecad3493d896fca047dae9c0e17/data/simplified-co2-data.csv"
+              },
+              "key": "country",
+              "fields": ["co2"]
+            }
+          },
+          {
+            "filter": "datum.co2 > co2Threshold"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 10,
+          "fontWeight": "bold",
+          "align": "center",
+          "baseline": "middle"
+        },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "text": {"field": "country", "type": "nominal"},
+          "color": {"value": "black"}
+        }
+      }
+    ]
   }
+  

@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "2000-2022: CO2 Emissions for Australia",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ZW123654/FIT3179_A2/ca7e1d8707338ecad3493d896fca047dae9c0e17/data/simplified-co2-data.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {"filter": "datum.country == 'Australia'"},
+      {"filter": "datum.year >= 2000 && datum.year <= 2022"}
+    ],
+    "layer": [
+      {
+        "mark": { "type": "line", "strokeWidth": 3 },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year"
+          },
+          "y": {
+            "field": "co2_including_luc",
+            "type": "quantitative",
+            "title": "CO2 Emissions"
+          },
+          "tooltip": [
+            {"field": "year", "type": "quantitative", "title": "Year"},
+            {"field": "co2_including_luc", "type": "quantitative", "title": "CO2 Emissions"},
+            {"field": "population", "type": "quantitative", "title": "Population"},
+            {"field": "gdp", "type": "quantitative", "title": "GDP"}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 5,
+          "dy": -5
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "co2_including_luc",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "annotation",
+            "type": "nominal"
+          }
+        },
+        "transform": [
+          {"filter": "datum.year == 2003 || datum.year == 2010 || datum.year == 2016"},
+          {
+            "calculate": "'Year: ' + datum.year + ', CO2: ' + datum.co2_including_luc",
+            "as": "annotation"
+          }
+        ]
+      }
+    ]
+  }

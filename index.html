@@ -19,10 +19,14 @@
             <div class="col-10">
                 <!-- Combined Title and Description Container -->
                 <div class="content-container">
-                    <div class="content-title">All About CO2 Emission</div>
+                    <div class="content-title">Australia vs World: CO2 Emission Overview</div>
                     <div class="content-description">
                         <p>
-                            Carbon dioxide (CO2) emissions are one of the primary drivers of climate change. They mainly originate from the combustion of fossil fuels, including coal, oil, and natural gas, which are used for energy production, industry, and transportation. CO2 emissions significantly contribute to the greenhouse effect, leading to global warming. This visualization allows you to explore and compare the CO2 emissions of various countries, highlighting the disparities in emission levels between nations and the factors that influence these differences, such as population size, economic activity, and industrial development. By understanding these emissions, we can better assess the global effort required to reduce CO2 and mitigate climate impacts.
+                            Carbon dioxide (CO2) is a greenhouse gas that significantly contributes to global warming and climate change. 
+                            It mainly originates from burning fossil fuels, including coal, oil, and natural gas, for energy production, 
+                            transportation, and industry. This visualization aims to introduce CO2 emissions and provide a comparison of Australia’s 
+                            emissions against the rest of the world. By exploring CO2 trends and emissions data, we can better understand Australia's 
+                            role in the global emissions landscape and highlight opportunities for mitigation.
                         </p>
                     </div>
                 </div>               
@@ -30,19 +34,39 @@
     
                 <!-- Chart 1 Container -->
                 <div class="chart-container">
+                    <div class="chart-title1">CO2 Emissions Over Time for Australia</div>
                     <div id="chart1" class="mb-4"></div>
                 </div>
                 <br>
     
                 <!-- Chart 2 Container -->
                 <div class="chart-container">
+                    <div class="chart-title2">Comparison of CO2 Emission</div>
                     <div id="chart2" class="mb-4"></div>
+                </div>
+                <br>
+
+                <div class="content-container">
+                    <div class="content-title2">Global CO2 Emissions in 2022</div>
+                    <div class="content-description">
+                        <p>
+                            The following section provides a global overview of CO2 emissions in 2022, illustrating which countries are the largest contributors. This helps us put Australia's emissions in context and better understand the global emissions landscape.
+                        </p>
+                    </div>
                 </div>
                 <br>
     
                 <!-- Chart 3 Container -->
                 <div class="chart-container">
-                    <div id="chart3"></div>
+                    <div class="chart-title3">2022: Map of CO2 Emission</div>
+                    <div id="chart3" class="mb-4"></div>
+                </div>
+                <br>
+
+                <!-- Chart 4 Container -->
+                <div class="chart-container">
+                    <div class="chart-title4">2022: Bubble Chart of CO2 Emission</div>
+                    <div id="chart4"></div>
                 </div>
             </div>
         </div>
@@ -50,9 +74,10 @@
     
 
     <script type="text/javascript">
-        var vg_1 = "js/co2_map.vg.json";
-        var vg_2 = "js/bubble_chart.vg.json";
-        var vg_3 = "js/bar_chart.vg.json";
+        var vg_1 = "js/line_chart.vg.json";
+        var vg_2 = "js/bar_chart.vg.json";
+        var vg_3 = "js/co2_map.vg.json";
+        var vg_4 = "js/bubble_chart.vg.json";
 
         vegaEmbed('#chart1', vg_1).then(function(result) {
             // Access the Vega view instance as result.view
@@ -63,6 +88,10 @@
         }).catch(console.error);
 
         vegaEmbed('#chart3', vg_3).then(function(result) {
+            // Access the Vega view instance as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#chart4', vg_4).then(function(result) {
             // Access the Vega view instance as result.view
         }).catch(console.error);
     </script>
